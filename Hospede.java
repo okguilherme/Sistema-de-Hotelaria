@@ -46,27 +46,34 @@ public class Hospede {
         this.email = email;
     }
 
-    // Considera hóspedes iguais se o CPF for igual
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-
-        Hospede hospede = (Hospede) obj;
-        return cpf.equals(hospede.cpf);
-    }
-
-    // Retorna um código baseado no cpf do hóspede 
+    
+    @Override
     public int hashCode() {
-        return cpf.hashCode();
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+        return result;
     }
 
-    // Retorna uma representação textual do hóspede
-    public String toString() {
-        return "Hospede{" + 
-               "nome='" + nome + '\'' +
-               ", cpf='" + cpf + '\'' +
-               ", telefone='" + telefone + '\'' +
-               ", email='" + email + '\'' +
-               '}';
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Hospede other = (Hospede) obj;
+        if (cpf == null) {
+            if (other.cpf != null)
+                return false;
+        } else if (!cpf.equals(other.cpf))
+            return false;
+        return true;
     }
+
+    @Override
+    public String toString() {
+        return "Hospede [nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + "]";
+    }    
 }
