@@ -5,18 +5,24 @@ public class Reserva {
     private Hospede hospede; // Hóspede que fez a reserva
     private LocalDate dataEntrada;
     private LocalDate dataSaida;
+    private String idReserva;
 
-    // Construtor 
-    public Reserva(Quarto quarto, Hospede hospede, LocalDate dataEntrada, LocalDate dataSaida) {
+    // Construtor
+    public Reserva(Quarto quarto, Hospede hospede, LocalDate dataEntrada, LocalDate dataSaida, String idReserva) {
         this.quarto = quarto;
         this.hospede = hospede;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
+        this.idReserva = idReserva;
     }
 
     // Métodos getters
     public Quarto getQuarto() {
         return quarto;
+    }
+
+    public String getIdReserva() {
+        return idReserva;
     }
 
     public Hospede getHospede() {
@@ -38,6 +44,10 @@ public class Reserva {
 
     public void setHospede(Hospede hospede) {
         this.hospede = hospede;
+    }
+
+    public void setIdReserva(String idReserva) {
+        this.idReserva = idReserva;
     }
 
     public void setDataEntrada(LocalDate dataEntrada) {
@@ -85,5 +95,4 @@ public class Reserva {
                 + dataSaida + "]";
     }
 
-    
 }
