@@ -14,7 +14,7 @@ public class ServicoQuarto {
                 return false;
             }
         }
-        quartos.add(quarto); // Adiciona o quarto à lista
+        quartos.add(quarto);
         return true;
     }
 
@@ -50,8 +50,8 @@ public class ServicoQuarto {
         Quarto q = buscarQuarto(numeroQuarto);
         if (q != null) {
             q.setDisponivel(disponivel);
-            return true; // Sucesso
+            return true; 
         }
-        return false; // Quarto não encontrado
+        return false; 
     }
 }

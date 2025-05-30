@@ -9,7 +9,7 @@ public class Reserva {
     private String dataCheckIn; // Ou LocalDate
     private String dataCheckOut; // Ou LocalDate
     private double valorTotal;
-    private String setIdReserva;
+    private String idReserva;
 
     public Reserva(String CPF, String idHospede, int numeroQuarto, String dataCheckIn, String dataCheckOut,
             double valorTotal, String setIdReserva) {
@@ -19,11 +19,12 @@ public class Reserva {
         this.dataCheckIn = dataCheckIn;
         this.dataCheckOut = dataCheckOut;
         this.valorTotal = valorTotal;
-        this.setIdReserva = setIdReserva;
+        this.idReserva = setIdReserva;
     }
 
-    public String getSetIdReserva() {
-        return setIdReserva;
+    // Métodos getters 
+    public String getIdReserva() {
+        return idReserva;
     }
 
     public String getCPF() {
@@ -50,6 +51,7 @@ public class Reserva {
         return valorTotal;
     }
 
+    // Métodos setters
     public void setCPF(String cPF) {
         CPF = cPF;
     }
@@ -74,19 +76,14 @@ public class Reserva {
         this.valorTotal = valorTotal;
     }
 
-    public void SetIdReserva(String setIdReserva) {
-        this.setIdReserva = setIdReserva;
+    public void setIdReserva(String setIdReserva) {
+        this.idReserva = setIdReserva;
     }
 
     @Override
     public String toString() {
-        return "Reserva{" +
-                "idReserva='" + CPF + '\'' +
-                ", idHospede='" + idHospede + '\'' +
-                ", numeroQuarto=" + numeroQuarto +
-                ", dataCheckIn='" + dataCheckIn + '\'' +
-                ", dataCheckOut='" + dataCheckOut + '\'' +
-                ", valorTotal=" + valorTotal +
-                '}';
+        return "Reserva [CPF=" + CPF + ", idHospede=" + idHospede + ", numeroQuarto=" + numeroQuarto + ", dataCheckIn="
+                + dataCheckIn + ", dataCheckOut=" + dataCheckOut + ", valorTotal=" + valorTotal + ", idReserva="
+                + idReserva + "]";
     }
 }

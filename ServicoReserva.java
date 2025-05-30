@@ -6,28 +6,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID; // Para gerar IDs de reserva únicos
+import java.util.UUID; 
 
 public class ServicoReserva {
-    // Usaremos um HashMap para armazenar as reservas, onde a chave é o ID da
-    // reserva.
+    // HashMap para armazenar as reservas, onde a chave é o ID da reserva.
     private Map<String, Reserva> reservas;
-    private ServicoQuarto servicoQuarto; // Dependência para verificar disponibilidade de quartos
+    private ServicoQuarto servicoQuarto; 
 
     public ServicoReserva(ServicoQuarto servicoQuarto) {
         this.reservas = new HashMap<>();
         this.servicoQuarto = servicoQuarto; // Injetar o serviço de quarto
     }
 
-    /**
-     * Tenta fazer uma nova reserva.
-     * 
-     * @param reserva O objeto Reserva contendo os detalhes da reserva.
-     * @return O objeto Reserva com um ID gerado se a reserva for bem-sucedida, ou
-     *         null caso contrário.
-     */
+    // Método para fazer reserva
     public Reserva fazerReserva(Reserva reserva) {
-        // 1. Verificar se o quarto existe e está disponível
+        // Verificar se o quarto existe e está disponível
         Quarto quarto = servicoQuarto.buscarQuarto(reserva.getNumeroQuarto());
         if (quarto == null) {
             System.out.println("Erro: Quarto " + reserva.getNumeroQuarto() + " não encontrado.");
@@ -38,34 +31,25 @@ public class ServicoReserva {
             return null;
         }
 
-        // 2. Gerar um ID único para a reserva
+        // Se está disponivel, gera um ID único para a reserva
         String idGerado = UUID.randomUUID().toString();
-        reserva.SetIdReserva(idGerado);
+        reserva.setIdReserva(idGerado);
 
-        // 3. (Opcional) Calcular o valor total se não estiver preenchido
-        // Aqui você faria o cálculo baseado nas datas e preço da diária do quarto.
-        // Por enquanto, assumimos que o valorTotal já vem no objeto reserva ou é
-        // calculado de outra forma.
-
-        // 4. Registrar a reserva
+        // Registrar a reserva
         reservas.put(idGerado, reserva);
 
-        // 5. Atualizar a disponibilidade do quarto para false
+        // Atualiza a disponibilidade do quarto para false
         servicoQuarto.atualizarDisponibilidadeQuarto(quarto.getNumero(), false);
 
         System.out.println("Reserva " + idGerado + " para o quarto " + quarto.getNumero() + " realizada com sucesso.");
         return reserva;
     }
 
-    /**
-     * Cancela uma reserva existente.
-     * 
-     * @param idReserva O ID da reserva a ser cancelada.
-     * @return true se a reserva foi cancelada com sucesso, false se não foi
-     *         encontrada.
-     */
+    // Cancela uma reserva pelo ID
     public boolean cancelarReserva(String idReserva) {
+        // retorna o objeto Reserva removido ou null se não existir.
         Reserva reservaRemovida = reservas.remove(idReserva);
+        
         if (reservaRemovida != null) {
             // Atualizar a disponibilidade do quarto para true novamente
             servicoQuarto.atualizarDisponibilidadeQuarto(reservaRemovida.getNumeroQuarto(), true);
@@ -76,22 +60,12 @@ public class ServicoReserva {
         return false;
     }
 
-    /**
-     * Busca uma reserva pelo seu ID.
-     * 
-     * @param idReserva O ID da reserva a ser buscada.
-     * @return O objeto Reserva correspondente, ou null se não for encontrado.
-     */
+    // Busca uma reserva pelo ID
     public Reserva buscarReserva(String idReserva) {
         return reservas.get(idReserva);
     }
 
-    /**
-     * Lista todas as reservas de um hóspede específico.
-     * 
-     * @param idHospede O ID do hóspede.
-     * @return Uma lista de reservas feitas pelo hóspede.
-     */
+    // Lista todas as reservas de um hóspede específico.
     public List<Reserva> listarReservasPorHospede(String idHospede) {
         List<Reserva> reservasDoHospede = new ArrayList<>();
         for (Reserva reserva : reservas.values()) {
@@ -102,11 +76,7 @@ public class ServicoReserva {
         return reservasDoHospede;
     }
 
-    /**
-     * Retorna uma lista de todas as reservas no sistema.
-     * 
-     * @return Uma lista de todos os objetos Reserva.
-     */
+    // Retorna uma lista de todas as reservas no sistema.
     public List<Reserva> listarTodasReservas() {
         return new ArrayList<>(reservas.values());
     }
