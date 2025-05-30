@@ -1,98 +1,82 @@
-import java.time.LocalDate;
+//package com.hotelaria.model;
+
+// import java.time.LocalDate; // Se for usar LocalDate
 
 public class Reserva {
-    private Quarto quarto; // Quarto reservado
-    private Hospede hospede; // Hóspede que fez a reserva
-    private LocalDate dataEntrada;
-    private LocalDate dataSaida;
-    private String idReserva;
+    private String CPF;
+    private String idHospede;
+    private int numeroQuarto;
+    private String dataCheckIn; // Ou LocalDate
+    private String dataCheckOut; // Ou LocalDate
+    private double valorTotal;
 
-    // Construtor
-    public Reserva(Quarto quarto, Hospede hospede, LocalDate dataEntrada, LocalDate dataSaida, String idReserva) {
-        this.quarto = quarto;
-        this.hospede = hospede;
-        this.dataEntrada = dataEntrada;
-        this.dataSaida = dataSaida;
-        this.idReserva = idReserva;
+    public Reserva(String CPF, String idHospede, int numeroQuarto, String dataCheckIn, String dataCheckOut,
+            double valorTotal) {
+        this.CPF = CPF;
+        this.idHospede = idHospede;
+        this.numeroQuarto = numeroQuarto;
+        this.dataCheckIn = dataCheckIn;
+        this.dataCheckOut = dataCheckOut;
+        this.valorTotal = valorTotal;
     }
 
-    // Métodos getters
-    public Quarto getQuarto() {
-        return quarto;
+    public String getCPF() {
+        return CPF;
     }
 
-    public String getIdReserva() {
-        return idReserva;
+    public int getNumeroQuarto() {
+        return numeroQuarto;
     }
 
-    public Hospede getHospede() {
-        return hospede;
+    public String getDataCheckIn() {
+        return dataCheckIn;
     }
 
-    public LocalDate getDataEntrada() {
-        return dataEntrada;
+    public String getDataCheckOut() {
+        return dataCheckOut;
     }
 
-    public LocalDate getDataSaida() {
-        return dataSaida;
+    public String getIdHospede() {
+        return idHospede;
     }
 
-    // Métodos setters
-    public void setQuarto(Quarto quarto) {
-        this.quarto = quarto;
+    public double getValorTotal() {
+        return valorTotal;
     }
 
-    public void setHospede(Hospede hospede) {
-        this.hospede = hospede;
+    public void setCPF(String cPF) {
+        CPF = cPF;
     }
 
-    public void setIdReserva(String idReserva) {
-        this.idReserva = idReserva;
+    public void setDataCheckIn(String dataCheckIn) {
+        this.dataCheckIn = dataCheckIn;
     }
 
-    public void setDataEntrada(LocalDate dataEntrada) {
-        this.dataEntrada = dataEntrada;
+    public void setNumeroQuarto(int numeroQuarto) {
+        this.numeroQuarto = numeroQuarto;
     }
 
-    public void setDataSaida(LocalDate dataSaida) {
-        this.dataSaida = dataSaida;
+    public void setDataCheckOut(String dataCheckOut) {
+        this.dataCheckOut = dataCheckOut;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((quarto == null) ? 0 : quarto.hashCode());
-        result = prime * result + ((dataEntrada == null) ? 0 : dataEntrada.hashCode());
-        return result;
+    public void setIdHospede(String idHospede) {
+        this.idHospede = idHospede;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Reserva other = (Reserva) obj;
-        if (quarto == null) {
-            if (other.quarto != null)
-                return false;
-        } else if (!quarto.equals(other.quarto))
-            return false;
-        if (dataEntrada == null) {
-            if (other.dataEntrada != null)
-                return false;
-        } else if (!dataEntrada.equals(other.dataEntrada))
-            return false;
-        return true;
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     @Override
     public String toString() {
-        return "Reserva [quarto=" + quarto + ", hospede=" + hospede + ", dataEntrada=" + dataEntrada + ", dataSaida="
-                + dataSaida + "]";
+        return "Reserva{" +
+                "idReserva='" + CPF + '\'' +
+                ", idHospede='" + idHospede + '\'' +
+                ", numeroQuarto=" + numeroQuarto +
+                ", dataCheckIn='" + dataCheckIn + '\'' +
+                ", dataCheckOut='" + dataCheckOut + '\'' +
+                ", valorTotal=" + valorTotal +
+                '}';
     }
-
 }
