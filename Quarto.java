@@ -1,11 +1,11 @@
-public class quarto {
+public class Quarto {
     private int numero;
     private String tipo;
     private int capacidade;
     private float precoDiaria;
     private boolean disponivel;
 
-    public quarto(int numero, String tipo, int capacidade, float precoDiaria, boolean disponivel) {
+    public Quarto(int numero, String tipo, int capacidade, float precoDiaria, boolean disponivel) {
         this.numero = numero;
         this.tipo = tipo;
         this.capacidade = capacidade;
