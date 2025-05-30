@@ -1,89 +1,92 @@
-import java.time.LocalDate;
+//package com.hotelaria.model;
+
+// import java.time.LocalDate; // Se for usar LocalDate
 
 public class Reserva {
-    private Quarto quarto; // Quarto reservado
-    private Hospede hospede; // Hóspede que fez a reserva
-    private LocalDate dataEntrada;
-    private LocalDate dataSaida;
+    private String CPF;
+    private String idHospede;
+    private int numeroQuarto;
+    private String dataCheckIn; // Ou LocalDate
+    private String dataCheckOut; // Ou LocalDate
+    private double valorTotal;
+    private String setIdReserva;
 
-    // Construtor 
-    public Reserva(Quarto quarto, Hospede hospede, LocalDate dataEntrada, LocalDate dataSaida) {
-        this.quarto = quarto;
-        this.hospede = hospede;
-        this.dataEntrada = dataEntrada;
-        this.dataSaida = dataSaida;
+    public Reserva(String CPF, String idHospede, int numeroQuarto, String dataCheckIn, String dataCheckOut,
+            double valorTotal, String setIdReserva) {
+        this.CPF = CPF;
+        this.idHospede = idHospede;
+        this.numeroQuarto = numeroQuarto;
+        this.dataCheckIn = dataCheckIn;
+        this.dataCheckOut = dataCheckOut;
+        this.valorTotal = valorTotal;
+        this.setIdReserva = setIdReserva;
     }
 
-    // Métodos getters
-    public Quarto getQuarto() {
-        return quarto;
+    public String getSetIdReserva() {
+        return setIdReserva;
     }
 
-    public Hospede getHospede() {
-        return hospede;
+    public String getCPF() {
+        return CPF;
     }
 
-    public LocalDate getDataEntrada() {
-        return dataEntrada;
+    public int getNumeroQuarto() {
+        return numeroQuarto;
     }
 
-    public LocalDate getDataSaida() {
-        return dataSaida;
+    public String getDataCheckIn() {
+        return dataCheckIn;
     }
 
-    // Métodos setters
-    public void setQuarto(Quarto quarto) {
-        this.quarto = quarto;
+    public String getDataCheckOut() {
+        return dataCheckOut;
     }
 
-    public void setHospede(Hospede hospede) {
-        this.hospede = hospede;
+    public String getIdHospede() {
+        return idHospede;
     }
 
-    public void setDataEntrada(LocalDate dataEntrada) {
-        this.dataEntrada = dataEntrada;
+    public double getValorTotal() {
+        return valorTotal;
     }
 
-    public void setDataSaida(LocalDate dataSaida) {
-        this.dataSaida = dataSaida;
+    public void setCPF(String cPF) {
+        CPF = cPF;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((quarto == null) ? 0 : quarto.hashCode());
-        result = prime * result + ((dataEntrada == null) ? 0 : dataEntrada.hashCode());
-        return result;
+    public void setDataCheckIn(String dataCheckIn) {
+        this.dataCheckIn = dataCheckIn;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Reserva other = (Reserva) obj;
-        if (quarto == null) {
-            if (other.quarto != null)
-                return false;
-        } else if (!quarto.equals(other.quarto))
-            return false;
-        if (dataEntrada == null) {
-            if (other.dataEntrada != null)
-                return false;
-        } else if (!dataEntrada.equals(other.dataEntrada))
-            return false;
-        return true;
+    public void setNumeroQuarto(int numeroQuarto) {
+        this.numeroQuarto = numeroQuarto;
+    }
+
+    public void setDataCheckOut(String dataCheckOut) {
+        this.dataCheckOut = dataCheckOut;
+    }
+
+    public void setIdHospede(String idHospede) {
+        this.idHospede = idHospede;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public void SetIdReserva(String setIdReserva) {
+        this.setIdReserva = setIdReserva;
     }
 
     @Override
     public String toString() {
-        return "Reserva [quarto=" + quarto + ", hospede=" + hospede + ", dataEntrada=" + dataEntrada + ", dataSaida="
-                + dataSaida + "]";
+        return "Reserva{" +
+                "idReserva='" + CPF + '\'' +
+                ", idHospede='" + idHospede + '\'' +
+                ", numeroQuarto=" + numeroQuarto +
+                ", dataCheckIn='" + dataCheckIn + '\'' +
+                ", dataCheckOut='" + dataCheckOut + '\'' +
+                ", valorTotal=" + valorTotal +
+                '}';
     }
-
-    
 }

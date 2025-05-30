@@ -1,100 +1,67 @@
-import java.util.List;
-import java.util.Scanner;
-import java.time.LocalDate;
+//import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        ServicoQuarto servicoQuarto = new ServicoQuarto();
+        Quarto quarto = new Quarto(101, "Casal", 2, 250.0, true);
+        Quarto quarto2 = new Quarto(101, "Suite", 3, 99, false);
+        Quarto quarto3 = new Quarto(2, "Solo", 1, 20, true);
 
-        boolean sair = false;
+        /*
+         * System.out.println(quarto);
+         * System.out.println(quarto.hashCode());
+         * System.out.println(quarto2);
+         * System.out.println(quarto2.hashCode());
+         * System.out.println(quarto.equals(quarto2));
+         */
 
-        while (!sair) {
-            System.out.println("\n=== Menu de Quartos ===");
-            System.out.println("1. Adicionar Quarto");
-            System.out.println("2. Remover Quarto");
-            System.out.println("3. Buscar Quarto");
-            System.out.println("4. Listar Todos os Quartos");
-            System.out.println("5. Atualizar Disponibilidade");
-            System.out.println("0. Sair");
-            System.out.print("Escolha uma opção: ");
+        Hospede hospede1 = new Hospede("André", "12345", "99999", "andrefelipe");
+        Hospede hospede2 = new Hospede("Guilherme", "12345", "88888", "guilhermeoliveira");
+        Hospede hospede3 = new Hospede("Guilherme", "987", "777777", "ehocria");
 
-            int opcao = sc.nextInt();
-            sc.nextLine(); // Consumir o ENTER após o número
+        /*
+         * System.out.println(hospede1);
+         * System.out.println(hospede1.hashCode());
+         * System.out.println(hospede2);
+         * System.out.println(hospede2.hashCode());
+         * System.out.println(hospede1.equals(hospede2));
+         */
 
-            switch (opcao) {
-                case 1:
-                    System.out.print("Número do quarto: ");
-                    int numero = sc.nextInt();
-                    sc.nextLine();
-                    System.out.print("Tipo do quarto: ");
-                    String tipo = sc.nextLine();
-                    System.out.print("Capacidade: ");
-                    int capacidade = sc.nextInt();
-                    System.out.print("Preço por diária: ");
-                    double preco = sc.nextDouble();
-                    System.out.print("Disponível (true/false): ");
-                    boolean disponivel = sc.nextBoolean();
+        // Reserva reserva1 = new Reserva(quarto, hospede1, LocalDate.of(2025, 5, 30),
+        // LocalDate.of(2025, 5, 30));
+        // Reserva reserva2 = new Reserva(quarto, hospede2, LocalDate.of(2025, 5, 30),
+        // LocalDate.of(2025, 5, 31));
+        // Reserva reserva3 = new Reserva(quarto3, hospede3, LocalDate.of(2025, 5, 30),
+        // LocalDate.of(2025, 5, 31));
 
-                    Quarto novoQuarto = new Quarto(numero, tipo, capacidade, preco, disponivel);
-                    if (servicoQuarto.adicionarQuarto(novoQuarto)) {
-                        System.out.println("Quarto adicionado com sucesso!");
-                    } else {
-                        System.out.println("Erro: Quarto com esse número já existe.");
-                    }
-                    break;
+        /*
+         * System.out.println(reserva1);
+         * System.out.println(reserva1.hashCode());
+         * System.out.println(reserva2);
+         * System.out.println(reserva2.hashCode());
+         * System.out.println(reserva1.equals(reserva2));
+         */
 
-                case 2:
-                    System.out.print("Número do quarto a remover: ");
-                    int numRemover = sc.nextInt();
-                    if (servicoQuarto.removerQuarto(numRemover)) {
-                        System.out.println("Quarto removido com sucesso!");
-                    } else {
-                        System.out.println("Quarto não encontrado.");
-                    }
-                    break;
+        Set<Quarto> quartos = new HashSet<>();
+        quartos.add(quarto);
+        quartos.add(quarto2); // não será adicionado
+        quartos.add(quarto3);
+        System.out.println("Quartos no set: " + quartos.size()); // 1
+        quartos.forEach(System.out::println);
 
-                case 3:
-                    System.out.print("Número do quarto a buscar: ");
-                    int numBuscar = sc.nextInt();
-                    Quarto q = servicoQuarto.buscarQuarto(numBuscar);
-                    if (q != null) {
-                        System.out.println("Quarto encontrado: " + q);
-                    } else {
-                        System.out.println("Quarto não encontrado.");
-                    }
-                    break;
+        Set<Hospede> hospedes = new HashSet<>();
+        hospedes.add(hospede1);
+        hospedes.add(hospede2); // não será adicionado
+        hospedes.add(hospede3);
+        System.out.println("Hospedes no set: " + hospedes.size()); // 1
+        hospedes.forEach(System.out::println);
 
-                case 4:
-                    System.out.println("Lista de todos os quartos:");
-                    for (Quarto quarto : servicoQuarto.listarTodosQuartos()) {
-                        System.out.println(quarto);
-                    }
-                    break;
-
-                case 5:
-                    System.out.print("Número do quarto para atualizar disponibilidade: ");
-                    int numAtualizar = sc.nextInt();
-                    System.out.print("Disponível? (true/false): ");
-                    boolean disp = sc.nextBoolean();
-                    if (servicoQuarto.atualizarDisponibilidadeQuarto(numAtualizar, disp)) {
-                        System.out.println("Disponibilidade atualizada.");
-                    } else {
-                        System.out.println("Quarto não encontrado.");
-                    }
-                    break;
-
-                case 0:
-                    sair = true;
-                    System.out.println("Saindo...");
-                    break;
-
-                default:
-                    System.out.println("Opção inválida, tente novamente.");
-                    break;
-            }
-        }
-
-        sc.close();
+        Set<Reserva> reservas = new HashSet<>();
+        // reservas.add(reserva1);
+        // reservas.add(reserva2); // não será adicionado
+        // reservas.add(reserva3);
+        System.out.println("Reservas no set: " + reservas.size()); // 1
+        reservas.forEach(System.out::println);
     }
 }
