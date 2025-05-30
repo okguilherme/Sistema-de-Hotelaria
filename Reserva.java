@@ -9,15 +9,21 @@ public class Reserva {
     private String dataCheckIn; // Ou LocalDate
     private String dataCheckOut; // Ou LocalDate
     private double valorTotal;
+    private String setIdReserva;
 
     public Reserva(String CPF, String idHospede, int numeroQuarto, String dataCheckIn, String dataCheckOut,
-            double valorTotal) {
+            double valorTotal, String setIdReserva) {
         this.CPF = CPF;
         this.idHospede = idHospede;
         this.numeroQuarto = numeroQuarto;
         this.dataCheckIn = dataCheckIn;
         this.dataCheckOut = dataCheckOut;
         this.valorTotal = valorTotal;
+        this.setIdReserva = setIdReserva;
+    }
+
+    public String getSetIdReserva() {
+        return setIdReserva;
     }
 
     public String getCPF() {
@@ -66,6 +72,10 @@ public class Reserva {
 
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public void SetIdReserva(String setIdReserva) {
+        this.setIdReserva = setIdReserva;
     }
 
     @Override

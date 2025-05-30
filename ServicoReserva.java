@@ -28,19 +28,19 @@ public class ServicoReserva {
      */
     public Reserva fazerReserva(Reserva reserva) {
         // 1. Verificar se o quarto existe e está disponível
-        Quarto quarto = servicoQuarto.buscarQuarto(reserva.getQuarto().getNumero());
+        Quarto quarto = servicoQuarto.buscarQuarto(reserva.getNumeroQuarto());
         if (quarto == null) {
-            System.out.println("Erro: Quarto " + reserva.getQuarto() + " não encontrado.");
+            System.out.println("Erro: Quarto " + reserva.getNumeroQuarto() + " não encontrado.");
             return null;
         }
         if (!quarto.isDisponivel()) {
-            System.out.println("Erro: Quarto " + reserva.getQuarto().getNumero() + " não está disponível.");
+            System.out.println("Erro: Quarto " + reserva.getNumeroQuarto() + " não está disponível.");
             return null;
         }
 
         // 2. Gerar um ID único para a reserva
         String idGerado = UUID.randomUUID().toString();
-        reserva.setIdReserva(idGerado);
+        reserva.SetIdReserva(idGerado);
 
         // 3. (Opcional) Calcular o valor total se não estiver preenchido
         // Aqui você faria o cálculo baseado nas datas e preço da diária do quarto.
@@ -68,7 +68,7 @@ public class ServicoReserva {
         Reserva reservaRemovida = reservas.remove(idReserva);
         if (reservaRemovida != null) {
             // Atualizar a disponibilidade do quarto para true novamente
-            servicoQuarto.atualizarDisponibilidadeQuarto(reservaRemovida.getQuarto().getNumero(), true);
+            servicoQuarto.atualizarDisponibilidadeQuarto(reservaRemovida.getNumeroQuarto(), true);
             System.out.println("Reserva " + idReserva + " cancelada com sucesso.");
             return true;
         }
@@ -95,7 +95,7 @@ public class ServicoReserva {
     public List<Reserva> listarReservasPorHospede(String idHospede) {
         List<Reserva> reservasDoHospede = new ArrayList<>();
         for (Reserva reserva : reservas.values()) {
-            if (reserva.getHospede().getCpf().equals(idHospede)) {
+            if (reserva.getIdHospede().equals(idHospede)) {
                 reservasDoHospede.add(reserva);
             }
         }
