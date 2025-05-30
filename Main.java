@@ -1,63 +1,68 @@
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+//import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        Quarto quarto = new Quarto(101, "Casal", 2, 250.0, true);
-        Quarto quarto2 =  new Quarto(101, "Suite", 3, 99, false);
-        Quarto quarto3 = new Quarto(2, "Solo", 1, 20, true);
+        // ### TESTES ###
+        // Instanciar serviços
+        ServicoQuarto servicoQuarto = new ServicoQuarto();
+        ServicoReserva servicoReserva = new ServicoReserva(servicoQuarto);
 
-        /* 
-        System.out.println(quarto);
-        System.out.println(quarto.hashCode());
-        System.out.println(quarto2);
-        System.out.println(quarto2.hashCode());
-        System.out.println(quarto.equals(quarto2));
-        */
+        // Criar e adicionar quartos
+        servicoQuarto.adicionarQuarto(new Quarto(101, "Simples", 2, 100.0, true));
+        servicoQuarto.adicionarQuarto(new Quarto(102, "Duplo", 3, 150.0, true));
+        servicoQuarto.adicionarQuarto(new Quarto(103, "Suíte", 4, 300.0, true));
+        servicoQuarto.adicionarQuarto(new Quarto(101, "Repetido", 1, 80.0, true)); // Teste erro número duplicado
 
-        Hospede hospede1 = new Hospede("André", "12345", "99999", "andrefelipe");
-        Hospede hospede2 = new Hospede("Guilherme", "12345", "88888", "guilhermeoliveira");
-        Hospede hospede3 = new Hospede("Guilherme", "987", "777777", "ehocria");
-       
-        /* 
-        System.out.println(hospede1);
-        System.out.println(hospede1.hashCode());
-        System.out.println(hospede2);
-        System.out.println(hospede2.hashCode());
-        System.out.println(hospede1.equals(hospede2));
-        */
+        // Buscar quarto
+        System.out.println("Buscar Quarto 102: " + servicoQuarto.buscarQuarto(102));
 
-        Reserva reserva1 = new Reserva(quarto, hospede1, LocalDate.of(2025, 5, 30), LocalDate.of(2025, 5, 30));
-        Reserva reserva2 = new Reserva(quarto, hospede2, LocalDate.of(2025, 5, 30), LocalDate.of(2025, 5, 31));
-        Reserva reserva3 = new Reserva(quarto3, hospede3, LocalDate.of(2025, 5, 30), LocalDate.of(2025, 5, 31));
-        /* 
-        System.out.println(reserva1);
-        System.out.println(reserva1.hashCode());
-        System.out.println(reserva2);
-        System.out.println(reserva2.hashCode());
-        System.out.println(reserva1.equals(reserva2));
-        */
+        // Listar quartos disponíveis
+        System.out.println("\nQuartos disponíveis:");
+        for (Quarto q : servicoQuarto.listarQuartosDisponiveis()) {
+            System.out.println(q);
+        }
 
-        Set<Quarto> quartos = new HashSet<>();
-        quartos.add(quarto);
-        quartos.add(quarto2);  // não será adicionado
-        quartos.add(quarto3);
-        System.out.println("Quartos no set: " + quartos.size()); // 1
-        quartos.forEach(System.out::println);
-        
-        Set<Hospede> hospedes = new HashSet<>();
-        hospedes.add(hospede1);
-        hospedes.add(hospede2); // não será adicionado
-        hospedes.add(hospede3);
-        System.out.println("Hospedes no set: " + hospedes.size()); // 1
-        hospedes.forEach(System.out::println);
-        
-        Set<Reserva> reservas = new HashSet<>();
-        reservas.add(reserva1);
-        reservas.add(reserva2); // não será adicionado
-        reservas.add(reserva3);
-        System.out.println("Reservas no set: " + reservas.size()); // 1
-        reservas.forEach(System.out::println);
+        // Fazer reservas
+        Reserva r1 = new Reserva("11111111111", "11111111111", 101, "01/06/2025", "03/06/2025", 200.0, "");
+        Reserva r2 = new Reserva("22222222222", "22222222222", 102, "02/06/2025", "04/06/2025", 300.0, "");
+        Reserva r3 = new Reserva("33333333333", "33333333333", 103, "03/06/2025", "06/06/2025", 900.0, "");
+
+        servicoReserva.fazerReserva(r1);
+        servicoReserva.fazerReserva(r2);
+        servicoReserva.fazerReserva(r3);
+
+        // Tentar reservar quarto já ocupado
+        Reserva r4 = new Reserva("44444444444", "44444444444", 101, "05/06/2025", "06/06/2025", 100.0, "");
+        servicoReserva.fazerReserva(r4);
+
+        // Listar todas reservas
+        System.out.println("\nTodas as reservas:");
+        for (Reserva r : servicoReserva.listarTodasReservas()) {
+            System.out.println(r);
+        }
+
+        // Cancelar uma reserva
+        System.out.println("\nCancelando a reserva do quarto 102...");
+        servicoReserva.cancelarReserva(r2.getIdReserva());
+
+        // Listar novamente após o cancelamento
+        System.out.println("\nReservas após cancelamento:");
+        for (Reserva r : servicoReserva.listarTodasReservas()) {
+            System.out.println(r);
+        }
+
+        // Verificar se o quarto 102 está disponível novamente
+        System.out.println("\nQuartos disponíveis após cancelamento:");
+        for (Quarto q : servicoQuarto.listarQuartosDisponiveis()) {
+            System.out.println(q);
+        }
+
+        // Listar reservas por hóspede
+        System.out.println("\nReservas do hóspede 11111111111:");
+        for (Reserva r : servicoReserva.listarReservasPorHospede("11111111111")) {
+            System.out.println(r);
+        }
     }
 }
+
+
