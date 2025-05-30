@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Reserva {
     private Quarto quarto; // Quarto reservado
@@ -7,7 +6,7 @@ public class Reserva {
     private LocalDate dataEntrada;
     private LocalDate dataSaida;
 
-    // Construtor
+    // Construtor 
     public Reserva(Quarto quarto, Hospede hospede, LocalDate dataEntrada, LocalDate dataSaida) {
         this.quarto = quarto;
         this.hospede = hospede;
@@ -49,30 +48,42 @@ public class Reserva {
         this.dataSaida = dataSaida;
     }
 
-    // Verifica se duas reservas são iguais com base no quarto e na data de entrada
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((quarto == null) ? 0 : quarto.hashCode());
+        result = prime * result + ((dataEntrada == null) ? 0 : dataEntrada.hashCode());
+        return result;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null || getClass() != obj.getClass())
+        if (obj == null)
             return false;
-
-        Reserva reserva = (Reserva) obj;
-        return Objects.equals(quarto, reserva.quarto) &&
-                Objects.equals(dataEntrada, reserva.dataEntrada);
+        if (getClass() != obj.getClass())
+            return false;
+        Reserva other = (Reserva) obj;
+        if (quarto == null) {
+            if (other.quarto != null)
+                return false;
+        } else if (!quarto.equals(other.quarto))
+            return false;
+        if (dataEntrada == null) {
+            if (other.dataEntrada != null)
+                return false;
+        } else if (!dataEntrada.equals(other.dataEntrada))
+            return false;
+        return true;
     }
 
-    // Gera o código hash da reserva com base no quarto e na data de entrada
-    public int hashCode() {
-        return Objects.hash(quarto, dataEntrada);
-    }
-
-    // Representação em string de uma reserva
+    @Override
     public String toString() {
-        return "Reserva{" +
-                "quarto=" + quarto +
-                ", hospede=" + hospede +
-                ", dataEntrada=" + dataEntrada +
-                ", dataSaida=" + dataSaida +
-                '}';
+        return "Reserva [quarto=" + quarto + ", hospede=" + hospede + ", dataEntrada=" + dataEntrada + ", dataSaida="
+                + dataSaida + "]";
     }
+
+    
 }
