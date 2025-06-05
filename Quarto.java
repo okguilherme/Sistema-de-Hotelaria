@@ -82,6 +82,4 @@ public class Quarto {
         return "Quarto [numero=" + numero + ", tipo=" + tipo + ", capacidade=" + capacidade + ", precoDiaria="
                 + precoDiaria + ", disponivel=" + disponivel + "]";
     }
-
-    
 }
