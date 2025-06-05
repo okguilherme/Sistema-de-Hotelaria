@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID; 
+import java.util.UUID;
 
 public class ServicoReserva {
     // HashMap para armazenar as reservas, onde a chave é o ID da reserva.
     private Map<String, Reserva> reservas;
-    private ServicoQuarto servicoQuarto; 
+    private ServicoQuarto servicoQuarto;
 
     public ServicoReserva(ServicoQuarto servicoQuarto) {
         this.reservas = new HashMap<>();
@@ -49,7 +49,7 @@ public class ServicoReserva {
     public boolean cancelarReserva(String idReserva) {
         // retorna o objeto Reserva removido ou null se não existir.
         Reserva reservaRemovida = reservas.remove(idReserva);
-        
+
         if (reservaRemovida != null) {
             // Atualizar a disponibilidade do quarto para true novamente
             servicoQuarto.atualizarDisponibilidadeQuarto(reservaRemovida.getNumeroQuarto(), true);
@@ -74,6 +74,10 @@ public class ServicoReserva {
             }
         }
         return reservasDoHospede;
+    }
+
+    public Map<String, Reserva> getMapaReservas() {
+        return this.reservas;
     }
 
     // Retorna uma lista de todas as reservas no sistema.
