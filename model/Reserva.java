@@ -1,3 +1,4 @@
+package model;
 //package com.hotelaria.model;
 
 // import java.time.LocalDate; // Se for usar LocalDate
