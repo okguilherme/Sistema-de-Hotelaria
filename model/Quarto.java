@@ -1,3 +1,5 @@
+package model;
+
 public class Quarto {
     private int numero; // Número do quarto
     private String tipo; // Tipo do quarto (ex: simples, duplo, suíte)
@@ -55,6 +57,7 @@ public class Quarto {
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;

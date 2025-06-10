@@ -1,27 +1,31 @@
 package io;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.Reserva;
-
-import java.io.File;
+import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
 public class ReservaInputStream {
+    private DataInputStream in;
 
-    private ObjectMapper objectMapper;
-
-    public ReservaInputStream() {
-        this.objectMapper = new ObjectMapper();
+    public ReservaInputStream(InputStream in) {
+        this.in = new DataInputStream(in);
     }
 
-    public void salvarReservasComoJson(Map<String, Reserva> reservas, String caminhoArquivo) {
-        try {
-            // Aqui escrevemos o Map em JSON no arquivo
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(caminhoArquivo), reservas);
-            System.out.println("Reservas salvas em: " + caminhoArquivo);
-        } catch (IOException e) {
-            System.err.println("Erro ao salvar JSON: " + e.getMessage());
+    public void lerReservas(Map<String, Reserva> mapa, int quantidade) throws IOException {
+        for (int i = 0; i < quantidade; i++) {
+            String cpf = in.readUTF();
+            String idHospede = in.readUTF();
+            int numeroQuarto = in.readInt();
+            String dataCheckIn = in.readUTF();
+            String dataCheckOut = in.readUTF();
+            double valorTotal = in.readDouble();
+            String idReserva = in.readUTF();
+
+            Reserva reserva = new Reserva(cpf, idHospede, numeroQuarto, dataCheckIn, dataCheckOut, valorTotal,
+                    idReserva);
+            mapa.put(idReserva, reserva);
         }
     }
 }
