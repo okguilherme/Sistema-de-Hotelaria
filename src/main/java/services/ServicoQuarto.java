@@ -1,8 +1,8 @@
-package services;
+package src.main.java.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Quarto;
+import src.main.java.model.Quarto;
 
 public class ServicoQuarto {
     // Lista que armazena todos os quartos cadastrados no sistema

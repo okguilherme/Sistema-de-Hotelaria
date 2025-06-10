@@ -1,4 +1,4 @@
-package services;
+package src.main.java.services;
 //package com.hotelaria.service;
 
 //import com.hotelaria.model.Reserva;
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import model.Quarto;
-import model.Reserva;
+import src.main.java.model.Quarto;
+import src.main.java.model.Reserva;
 
 public class ServicoReserva {
     // HashMap para armazenar as reservas, onde a chave é o ID da reserva.
