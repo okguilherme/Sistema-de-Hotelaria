@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-// Importações para Map e HashMap se estiverem sendo usadas (caso contrário, remova-as)
 import java.util.HashMap;
 import java.util.Map;
 import java.io.DataInputStream; // Adicione esta linha
@@ -62,20 +61,6 @@ public class Servidor {
                 reservaStreamIn = new ReservaArrayInputStream(socketIn);
                 System.out.println("Iniciando leitura de Reservas do cliente " + clientSocket.getInetAddress().getHostAddress() + "...");
 
-                // ** NOVO: Lê a quantidade total de Reservas esperadas **
-                // Isso deve ser lido do DataInputStream subjacente.
-                // Como ReservaArrayInputStream já encapsula um DataInputStream,
-                // vamos adicioná-lo lá para um método de leitura de quantidade.
-                // OU, para simplificar por agora, podemos ler diretamente do socketIn.
-                // Contudo, para ser consistente com o ReservaArrayInputStream,
-                // vamos assumir que o readReserva() do ReservaArrayInputStream já está pronto.
-
-                // O construtor do ReservaArrayOutputStream agora escreve a quantidade.
-                // O ReservaArrayInputStream.readReserva() não lê essa quantidade inicial.
-                // Então, o cliente deve ler primeiro essa quantidade e usar para loop.
-
-                // Vamos ajustar a lógica do CLIENT HANDLER:
-                // Primeiramente, leia a quantidade de reservas que o cliente enviou.
                 DataInputStream initialDataIn = new DataInputStream(socketIn);
                 int numberOfReservas = initialDataIn.readInt(); // Lê a quantidade de reservas
                 

@@ -31,8 +31,7 @@ public class Cliente {
             reservaStreamOut = new ReservaArrayOutputStream(socketOut, reservasParaEnviar, quantidadeReservas);
             System.out.println("Iniciando envio das Reservas...");
 
-            // ** MUDANÇA CRÍTICA AQUI: CHAME O NOVO MÉTODO writeAllReservas() **
-            reservaStreamOut.writeAllReservas(); // Este método agora envia todas as 5 reservas.
+            reservaStreamOut.writeAllReservas();
 
             System.out.println("Todas as reservas enviadas para o servidor.");
 
