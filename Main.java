@@ -1,3 +1,9 @@
+import io.ReservaInputStream;
+import model.Quarto;
+import model.Reserva;
+import services.ServicoQuarto;
+import services.ServicoReserva;
+
 public class Main {
     public static void main(String[] args) {
         ServicoQuarto servicoQuarto = new ServicoQuarto();
