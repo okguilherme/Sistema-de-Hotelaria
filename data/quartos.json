@@ -1,0 +1,42 @@
+[
+  {
+    "numero": 101,
+    "ocupado": true
+  },
+  {
+    "numero": 102,
+    "ocupado": false
+  },
+  {
+    "numero": 103,
+    "ocupado": true
+  },
+  {
+    "numero": 104,
+    "ocupado": true
+  },
+  {
+    "numero": 105,
+    "ocupado": true
+  },
+  {
+    "numero": 106,
+    "ocupado": false
+  },
+  {
+    "numero": 107,
+    "ocupado": true
+  },
+  {
+    "numero": 108,
+    "ocupado": false
+  },
+  {
+    "numero": 109,
+    "ocupado": true
+  },
+  {
+    "numero": 110,
+    "ocupado": false
+  }
+]

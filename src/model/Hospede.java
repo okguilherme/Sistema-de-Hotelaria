@@ -1,11 +1,12 @@
-package src.main.java.model;
+package src.model;
+
 public class Hospede {
     private String nome;
     private String cpf;
     private String telefone;
     private String email;
 
-    // Construtor 
+    // Construtor
     public Hospede(String nome, String cpf, String telefone, String email) {
         this.nome = nome;
         this.cpf = cpf;
@@ -13,7 +14,7 @@ public class Hospede {
         this.email = email;
     }
 
-    // Métodos getters 
+    // Métodos getters
     public String getNome() {
         return nome;
     }
@@ -30,7 +31,7 @@ public class Hospede {
         return email;
     }
 
-    // Métodos setters 
+    // Métodos setters
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -47,7 +48,6 @@ public class Hospede {
         this.email = email;
     }
 
-    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -76,5 +76,5 @@ public class Hospede {
     @Override
     public String toString() {
         return "Hospede [nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + "]";
-    }    
+    }
 }

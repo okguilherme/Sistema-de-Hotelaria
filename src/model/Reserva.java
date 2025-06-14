@@ -1,4 +1,4 @@
-package src.main.java.model;
+package src.model;
 
 public class Reserva {
     private String CPF;
