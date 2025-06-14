@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 import java.io.DataInputStream; // Adicione esta linha
 
 public class Servidor {
@@ -59,12 +59,14 @@ public class Servidor {
             try {
                 socketIn = clientSocket.getInputStream();
                 reservaStreamIn = new ReservaArrayInputStream(socketIn);
-                System.out.println("Iniciando leitura de Reservas do cliente " + clientSocket.getInetAddress().getHostAddress() + "...");
+                System.out.println("Iniciando leitura de Reservas do cliente "
+                        + clientSocket.getInetAddress().getHostAddress() + "...");
 
                 DataInputStream initialDataIn = new DataInputStream(socketIn);
                 int numberOfReservas = initialDataIn.readInt(); // Lê a quantidade de reservas
-                
-                System.out.println("Cliente " + clientSocket.getInetAddress().getHostAddress() + " enviará " + numberOfReservas + " reservas.");
+
+                System.out.println("Cliente " + clientSocket.getInetAddress().getHostAddress() + " enviará "
+                        + numberOfReservas + " reservas.");
 
                 Reserva reservaRecebida;
                 int contador = 0;
@@ -79,10 +81,12 @@ public class Servidor {
                         break; // Sai do loop se ler null antes da quantidade esperada
                     }
                 }
-                System.out.println("Total de " + contador + " Reservas recebidas do cliente " + clientSocket.getInetAddress().getHostAddress() + ".");
+                System.out.println("Total de " + contador + " Reservas recebidas do cliente "
+                        + clientSocket.getInetAddress().getHostAddress() + ".");
 
             } catch (IOException e) {
-                System.err.println("Erro ao lidar com o cliente " + clientSocket.getInetAddress().getHostAddress() + ": " + e.getMessage());
+                System.err.println("Erro ao lidar com o cliente " + clientSocket.getInetAddress().getHostAddress()
+                        + ": " + e.getMessage());
                 e.printStackTrace(); // Para ver a stack trace completa do erro
             } finally {
                 try {
