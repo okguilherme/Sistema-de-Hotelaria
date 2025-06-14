@@ -1,10 +1,9 @@
 package src.main.java.test;
 
+//import java.io.File;
 import src.main.java.io.ReservaArrayOutputStream;
 import src.main.java.io.ReservaArrayInputStream;
 import src.main.java.model.Reserva;
-
-//import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package src.main.java.services;
+
 import java.util.ArrayList;
 import java.util.List;
-
 import src.main.java.model.Quarto;
 
 public class ServicoQuarto {
@@ -53,8 +53,8 @@ public class ServicoQuarto {
         Quarto q = buscarQuarto(numeroQuarto);
         if (q != null) {
             q.setDisponivel(disponivel);
-            return true; 
+            return true;
         }
-        return false; 
+        return false;
     }
 }

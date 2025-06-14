@@ -1,14 +1,11 @@
 package src.main.java.model;
-//package com.hotelaria.model;
-
-// import java.time.LocalDate; // Se for usar LocalDate
 
 public class Reserva {
     private String CPF;
     private String idHospede;
     private int numeroQuarto;
-    private String dataCheckIn; // Ou LocalDate
-    private String dataCheckOut; // Ou LocalDate
+    private String dataCheckIn;
+    private String dataCheckOut;
     private double valorTotal;
     private String idReserva;
 
@@ -23,7 +20,7 @@ public class Reserva {
         this.idReserva = setIdReserva;
     }
 
-    // Métodos getters 
+    // Métodos getters
     public String getIdReserva() {
         return idReserva;
     }

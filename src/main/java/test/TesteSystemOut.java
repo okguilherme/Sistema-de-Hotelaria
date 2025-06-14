@@ -1,8 +1,7 @@
 package src.main.java.test;
 
-import src.main.java.io.ReservaArrayOutputStream; 
-import src.main.java.model.Reserva;                
-
+import src.main.java.io.ReservaArrayOutputStream;
+import src.main.java.model.Reserva;
 import java.io.IOException;
 
 public class TesteSystemOut {
@@ -16,8 +15,8 @@ public class TesteSystemOut {
         // Instanciar ReservaArrayOutputStream com System.out como destino
         try (ReservaArrayOutputStream resOut = new ReservaArrayOutputStream(System.out, reservas, reservas.length)) {
             System.out.println("Escrevendo bytes brutos para System.out (pode parecer ilegível):");
-            
-            for (int i = 0; i < 1000; i++) { 
+
+            for (int i = 0; i < 1000; i++) {
                 try {
                     resOut.write(0);
                 } catch (IOException e) {
