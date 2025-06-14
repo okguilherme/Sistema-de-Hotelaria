@@ -1,4 +1,4 @@
-package model;
+package src.main.java.model;
 public class Hospede {
     private String nome;
     private String cpf;
