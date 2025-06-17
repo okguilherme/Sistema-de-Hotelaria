@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays; // Para comparar arrays de Reservas
 
 public class TesteFileStreams {
 
@@ -16,37 +17,31 @@ public class TesteFileStreams {
     public static void main(String[] args) {
         System.out.println("--- Iniciando Teste com FileOutputStream e FileInputStream ---");
 
-        Reserva[] reservasParaEscrever = GeradorDeReservas.criarReservasDeTeste(5); // 5 Reservas
+        Reserva[] reservasParaEscrever = GeradorDeReservas.criarReservasDeTeste(5); 
 
         System.out.println("\n--- Escrevendo Reservas para o arquivo: " + NOME_ARQUIVO + " ---");
         try (FileOutputStream fos = new FileOutputStream(NOME_ARQUIVO);
              ReservaArrayOutputStream resOut = new ReservaArrayOutputStream(fos, reservasParaEscrever, reservasParaEscrever.length)) {
 
-            // Vamos usar um loop longo para garantir que todas as reservas são processadas e escritas.
-            for (int i = 0; i < 2000; i++) { // Número grande para cobrir todas as reservas
-                try {
-                    resOut.write(0); // O valor do byte não importa
-                } catch (IOException e) {
-                    // Quando não houver mais bytes internos para escrever, pode lançar exceção ou parar.
-                    break;
-                }
-            }
+            resOut.writeAllReservas(); 
 
             System.out.println("Reservas escritas para o arquivo.");
 
         } catch (IOException e) {
             System.err.println("Erro ao escrever Reservas para o arquivo: " + e.getMessage());
             e.printStackTrace();
+            return; 
         }
 
         System.out.println("\n--- Lendo Reservas do arquivo: " + NOME_ARQUIVO + " ---");
+        Reserva[] reservasLidas = new Reserva[reservasParaEscrever.length]; // Para armazenar as lidas
         try (FileInputStream fis = new FileInputStream(NOME_ARQUIVO);
              ReservaArrayInputStream resIn = new ReservaArrayInputStream(fis)) {
 
             Reserva reservaLida;
             int contador = 0;
-            // O loop para ler Reservas é mais direto usando o método readReserva()
-            while ((reservaLida = resIn.readReserva()) != null) {
+            while (contador < reservasParaEscrever.length && (reservaLida = resIn.readReserva()) != null) {
+                reservasLidas[contador] = reservaLida; // Armazena a reserva lida
                 contador++;
                 System.out.println("Reserva lida #" + contador + ": " + reservaLida);
             }
@@ -55,6 +50,31 @@ public class TesteFileStreams {
         } catch (IOException e) {
             System.err.println("Erro ao ler Reservas do arquivo: " + e.getMessage());
             e.printStackTrace();
+        }
+
+        // --- Verificação da integridade dos dados ---
+        System.out.println("\n--- Verificando integridade dos dados ---");
+        boolean todosIguais = true;
+        if (reservasParaEscrever.length != reservasLidas.length) {
+            todosIguais = false;
+            System.err.println("Erro: Quantidade de reservas escritas (" + reservasParaEscrever.length + 
+                               ") difere da quantidade de reservas lidas (" + reservasLidas.length + ").");
+        } else {
+            for (int i = 0; i < reservasParaEscrever.length; i++) {
+                if (!reservasParaEscrever[i].equals(reservasLidas[i])) { 
+                    todosIguais = false;
+                    System.err.println("Diferença encontrada na reserva " + (i + 1) + ":");
+                    System.err.println("  Original: " + reservasParaEscrever[i]);
+                    System.err.println("  Lida:     " + reservasLidas[i]);
+                }
+            }
+        }
+        
+
+        if (todosIguais) {
+            System.out.println("Teste BEM SUCEDIDO: Todas as reservas foram serializadas e desserializadas corretamente para/de arquivo.");
+        } else {
+            System.err.println("Teste FALHOU: Houve diferenças ou problemas na leitura/escrita das reservas.");
         }
 
         System.out.println("--- Teste com FileOutputStream e FileInputStream Finalizado ---");

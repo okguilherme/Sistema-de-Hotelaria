@@ -11,19 +11,14 @@ public class TesteSystemOut {
         System.out.println("--- Iniciando Teste com System.out ---");
 
         // Criar algumas Reservas de teste
-        Reserva[] reservas = GeradorDeReservas.criarReservasDeTeste(3); // 3 Reservas para teste
+        Reserva[] reservas = GeradorDeReservas.criarReservasDeTeste(3); 
 
         // Instanciar ReservaArrayOutputStream com System.out como destino
         try (ReservaArrayOutputStream resOut = new ReservaArrayOutputStream(System.out, reservas, reservas.length)) {
-            System.out.println("Escrevendo bytes brutos para System.out (pode parecer ilegível):");
+            System.out.println("Escrevendo bytes brutos das Reservas para System.out (pode parecer ilegível, é esperado):");
             
-            for (int i = 0; i < 1000; i++) { 
-                try {
-                    resOut.write(0);
-                } catch (IOException e) {
-                    break;
-                }
-            }
+            resOut.writeAllReservas();
+
             System.out.println("\n--- Bytes brutos de Reservas escritos para System.out ---");
 
         } catch (IOException e) {
