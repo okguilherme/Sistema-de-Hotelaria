@@ -1,0 +1,5 @@
+[
+  {"id":"c002","nome":"Candidato B","numero":20,"partido":"Partido Y"},
+  {"id":"c001","nome":"Candidato A","numero":10,"partido":"Partido X"},
+  {"id":"c003","nome":"Candidato C","numero":30,"partido":"Partido Z"}
+]

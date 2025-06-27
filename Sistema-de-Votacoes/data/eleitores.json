@@ -1,0 +1,5 @@
+[
+  { "id": "e001", "login": "user1", "senha": "123", "jaVotou": false },
+  { "id": "e002", "login": "user2", "senha": "456", "jaVotou": false },
+  { "id": "e003", "login": "user3", "senha": "789", "jaVotou": false }
+]
