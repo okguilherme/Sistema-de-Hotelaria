@@ -1,0 +1,11 @@
+[
+  {
+    "CPF": "111.222.333-01",
+    "idHospede": "HSP1",
+    "numeroQuarto": 101,
+    "dataCheckIn": "28/06/2025",
+    "dataCheckOut": "03/07/2025",
+    "valorTotal": 250.0,
+    "idReserva": "addf8c8f-6fa5-49b3-ad67-05569d1c0d68"
+  }
+]

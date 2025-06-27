@@ -6,11 +6,11 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicoQuartoImpl extends UnicastRemoteObject implements QuartoServiceRemote {
+public class QuartoServiceImpl extends UnicastRemoteObject implements QuartoServiceRemote {
     // Lista que armazena todos os quartos cadastrados no sistema
     private List<Quarto> quartos = new ArrayList<>();
 
-    public ServicoQuartoImpl() throws RemoteException {
+    public QuartoServiceImpl() throws RemoteException {
         super(); // Construtor da classe pai (UnicastRemoteObject)
     }
 
