@@ -11,3 +11,8 @@ Desenvolver uma aplicação distribuída utilizando **Java RMI (Remote Method In
 - **Linguagem:** Java
 - **Comunicação remota:** Java RMI
 
+## LINK DA APRESENTAÇÃO 
+  https://drive.google.com/file/d/1C1e9RYEvRVePwMOzkE8fTkKgR6SmFRwP/view?usp=sharing
+  
+## LINK DO RELATÓRIO
+
