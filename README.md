@@ -15,4 +15,5 @@ Desenvolver uma aplicação distribuída utilizando **Java RMI (Remote Method In
   https://drive.google.com/file/d/1C1e9RYEvRVePwMOzkE8fTkKgR6SmFRwP/view?usp=sharing
   
 ## LINK DO RELATÓRIO
+  https://docs.google.com/document/d/1RgubVXdsWTRh8VU9Q04HFF90No8BGOG3RS3jfvb9S08/edit?usp=sharing
 
