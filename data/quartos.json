@@ -1,0 +1,44 @@
+[
+  {
+    "numero": 101,
+    "tipo": "Standard",
+    "capacidade": 2,
+    "precoDiaria": 150.0,
+    "disponivel": false
+  },
+  {
+    "numero": 102,
+    "tipo": "Standard",
+    "capacidade": 2,
+    "precoDiaria": 150.0,
+    "disponivel": false
+  },
+  {
+    "numero": 202,
+    "tipo": "Luxo",
+    "capacidade": 3,
+    "precoDiaria": 250.0,
+    "disponivel": true
+  },
+  {
+    "numero": 301,
+    "tipo": "Suíte",
+    "capacidade": 4,
+    "precoDiaria": 400.0,
+    "disponivel": true
+  },
+  {
+    "numero": 201,
+    "tipo": "Luxo",
+    "capacidade": 3,
+    "precoDiaria": 250.0,
+    "disponivel": true
+  },
+  {
+    "numero": 99,
+    "tipo": "Suite",
+    "capacidade": 3,
+    "precoDiaria": 200.0,
+    "disponivel": false
+  }
+]

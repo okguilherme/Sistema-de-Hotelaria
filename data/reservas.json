@@ -1,0 +1,35 @@
+[
+  {
+    "idReserva": "9d08eedf-7b40-4f8f-8aa3-1d872bd7ab04",
+    "numeroQuarto": 102,
+    "hospede": {
+      "nome": "Andre",
+      "cpf": "12345"
+    },
+    "dataCheckin": "2025-07-24",
+    "dataCheckout": "2025-07-27",
+    "valorTotal": 0.0
+  },
+  {
+    "idReserva": "e95c7023-142d-4a4f-b00a-354f4577456c",
+    "numeroQuarto": 101,
+    "hospede": {
+      "nome": "João Silva",
+      "cpf": "12345678900"
+    },
+    "dataCheckin": "2025-08-01",
+    "dataCheckout": "2025-08-05",
+    "valorTotal": 0.0
+  },
+  {
+    "idReserva": "934ba47d-3193-485d-8c60-899425c53ddd",
+    "numeroQuarto": 99,
+    "hospede": {
+      "nome": "jose",
+      "cpf": "179"
+    },
+    "dataCheckin": "2025-07-03",
+    "dataCheckout": "2025-07-07",
+    "valorTotal": 0.0
+  }
+]
